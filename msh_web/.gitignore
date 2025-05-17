@@ -1,0 +1,4 @@
+# Ignore Firebase service account key
+firebaseServiceKey.json
+# Ignore Firebase configuration
+static/js/firebase-config.js

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Info Hub - Migrant Support Hub</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../static/css/infostyle.css">
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement(
+                { pageLanguage: 'en' },
+                'google_translate_element'
+            );
+        }
+    </script>
+
+    <script type="text/javascript"
+        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</head>
+
+<body>
+    <div id="google_translate_element"></div>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="../templates/index.html">Migrant Support Hub</a>
+        </div>
+    </nav>
+
+    <div id="navButtons" class="container text-center mt-4">
+        <button onclick="window.location.href='../templates/index.html'">Home</button>
+        <button onclick="scrollToSection('journey')">Our Journey</button>
+        <button onclick="scrollToSection('mission')">Our Mission</button>
+        <button onclick="scrollToSection('vision')">Our Vision</button>
+        <button onclick="scrollToSection('complaint')">Complaint Registration</button>
+        <button onclick="scrollToSection('tracking')">Tracking Support</button>
+        <button onclick="scrollToSection('legal')">Legal Support</button>
+        <button onclick="scrollToSection('helpline')">Helpline Number</button>
+        <button onclick="scrollToSection('email')">Email Support</button>
+    </div>
+    <section>
+     <div id="migrantCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="./20945185.jpg" alt="">
+                    <div class="carousel-caption">
+                        <p>Design 1</p>
+                        <h2>Our Journey</h2>
+                        <p>Born from the urgency of the migrant crisis, Migrant Support Hub began as a small community
+                            outreach project...</p>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <img src="./3d-illustration-pen-putting-blue-ticks-paper.jpg" alt="">
+                    <div class="carousel-caption">
+                        <p>Design 2</p>
+                        <h2>Our Mission</h2>
+                        <p>Providing transparent complaint tracking, legal assistance, and access to essential
+                            services...</p>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <img src="./8383290.jpg" alt="">
+                    <div class="carousel-caption">
+                        <p>Design 3</p>
+                        <h2>Our Vision</h2>
+                        <p>Creating a world where migration is safe, dignified, and a pathway to opportunity rather than
+                            struggle.</p>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <img src="./20945185.jpg" alt="">
+                    <div class="carousel-caption">
+                        <p>Design 4</p>
+                        <h2>Complaint Registration</h2>
+                        <p>File complaints easily and track their progress with our digital complaint registration
+                            system.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation buttons -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#migrantCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#migrantCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+
+        <!-- Content Below Carousel -->
+        <div id="sliderInfo" class="slider-info active">
+            <p>Born from the urgency of the migrant crisis, Migrant Support Hub began as a small community outreach
+                project...</p>
+        </div>
+    </section>
+    
+    <section id="journey" class="our-journey d-flex align-items-center justify-content-center text-center text-white">
+        <div class="container">
+            <h1 class="display-4 fw-bold">Our Journey</h1>
+            <p class="lead mt-4">
+                Born from the urgency of the migrant crisis, Migrant Support Hub began as a small community outreach
+                project.
+                What started with just a handful of volunteers responding to emergency calls has now evolved into a
+                digitally connected,
+                state-supported initiative reaching thousands.
+            </p>
+            <p class="mt-3">
+                Our mission took shape during long train rides, in temporary shelters, and in legal offices where
+                justice had long been delayed.
+                With every complaint we resolved and every life we helped stabilize, our network of hope expanded.
+            </p>
+            <p class="mt-3">
+                Today, our journey continues—powered by empathy, technology, and the unwavering belief that every
+                migrant deserves dignity,
+                protection, and opportunity.
+            </p>
+            <a href="#services" class="btn btn-outline-light mt-4">Explore Our Services</a>
+        </div>
+    </section>
+
+
+    <section id="mission" class="section bg-white">
+        <h1 class="section-title">Our Mission</h1>
+        <img src="../static/images/mission" alt="Our Mission">
+        <p>Providing transparent complaint tracking, legal assistance, and access to essential services for every
+            migrant in need.</p>
+    </section>
+
+    <section id="vision" class="section bg-light">
+        <h1 class="section-title">Our Vision</h1>
+        <img src="../static/images/" alt="Our Vision">
+        <p>Creating a world where migration is safe, dignified, and a pathway to opportunity rather than struggle.</p>
+    </section>
+
+    <section id="complaint" class="section bg-white">
+        <h1 class="section-title">Complaint Registration</h1>
+        <p>File complaints easily and track their progress with our digital complaint registration system.</p>
+    </section>
+
+    <section id="tracking" class="section bg-light">
+        <h1 class="section-title">Tracking Support</h1>
+        <p>Track your complaints and support requests with real-time updates and transparent communication.</p>
+    </section>
+
+    <section id="legal" class="section bg-white">
+        <h1 class="section-title">Legal Support</h1>
+        <p>Access legal resources and assistance to navigate complex migrant-related issues and challenges.</p>
+    </section>
+
+    <section id="helpline" class="section bg-light">
+        <h1 class="section-title">Helpline Number</h1>
+        <p>Call us anytime at <strong>+91 XXXXX XXXXX</strong> for 24/7 support and emergency assistance.</p>
+    </section>
+
+    <section id="email" class="section bg-white">
+        <h1 class="section-title">Email Support</h1>
+        <p>Contact us via email at <strong>support@migranthub.com</strong> for help and inquiries.</p>
+    </section>
+    <script src="../static/js/infoscript.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script>
+        const sliderInfo = document.getElementById('sliderInfo');
+        const infoTexts = [
+            "Born from the urgency of the migrant crisis, Migrant Support Hub began as a small community outreach project...",
+            "Providing transparent complaint tracking, legal assistance, and access to essential services for every migrant in need.",
+            "Creating a world where migration is safe, dignified, and a pathway to opportunity rather than struggle.",
+            "File complaints easily and track their progress with our digital complaint registration system."
+        ];
+
+        document.getElementById('migrantCarousel').addEventListener('slid.bs.carousel', function (event) {
+            const index = event.to;
+            sliderInfo.style.opacity = 0;
+            setTimeout(() => {
+                sliderInfo.innerHTML = `<p>${infoTexts[index]}</p>`;
+                sliderInfo.style.opacity = 1;
+            }, 7000);
+        });
+    </script>
+</body>
+
+</html>
