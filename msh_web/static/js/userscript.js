@@ -21,17 +21,21 @@ toggleBtn?.addEventListener("click", () => {
 
 
 
-function showContent(id) {
+window.showContent = function(id) {
   cBox.forEach(section => {
     section.classList.add("d-none");
   });
-  document.getElementById(id).classList.remove("d-none");
-
-  // Auto close on mobile
+  const selectedSection = document.getElementById(id);
+  if (selectedSection) {
+    selectedSection.classList.remove("d-none");
+  }
   if (window.innerWidth < 768) {
     sidebar.classList.remove("show");
   }
-}
+};
+
+
+
 const uploadButton = document.getElementById('uploadButton');
 const profileImageInput = document.getElementById('profileImageInput');
 const profileImage = document.getElementById('profileImage');
@@ -77,6 +81,27 @@ complaintForm?.addEventListener("submit", function(event) {
     desiredOutcome
   });
 
+  // Optionally, you can send the data to your backend using fetch or XMLHttpRequest
+  // fetch('/complaint-submit', {
+  //   method: 'POST',
+  //   body: JSON.stringify({
+  //     fullName,
+  //     email,
+  //     complaintCategory,
+  //     complaintDescription,
+  //     supportingDocuments,
+  //     witnesses,
+  //     desiredOutcome
+  //   }),
+  //   headers: {
+  //     'Content-Type': 'application/json'
+  //   }
+  // })
+  // .then(response => response.json())
+  // .then(data => console.log(data))
+  // .catch(error => console.error('Error:', error));
+
+  // Clear form after submission (optional)
   complaintForm.reset();
   alert("Your complaint has been submitted successfully!");
 });

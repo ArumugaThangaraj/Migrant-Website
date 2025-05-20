@@ -5,23 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MSH</title>
-    <link rel="shortcut icon" href="./assets/Images/MSH Logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="./assets/Images/msh-logo.png" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../static/css/style.css">
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement(
-                { pageLanguage: 'en' },
-                'google_translate_element'
-            );
-        }
-    </script>
-    <script type="text/javascript"
-        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </head>
 
 <body>
@@ -32,7 +22,7 @@
             <div class="container">
                 <!-- Logo Section -->
                 <div class="logo d-flex align-items-center">
-                    <div class="msh-logo d-flex align-items-center"><img src="../static/images/MSH Logo.png"
+                    <div class="msh-logo d-flex align-items-center"><img src="../static/images/msh-logo.png"
                             alt="Migrant Support Hub Logo" class="img" width="100">
                         <h3>Migrant Support Hub</h3>
                     </div>
@@ -89,15 +79,6 @@
                             <a class="nav-link" href="#register">How to Register?</a>
                         </li>
                     </ul>
-
-                    <!-- Language Toggle Button -->
-                    <div class="dropdown g-btn language-toggle me-2">
-                        <button class="btn  dropdown-toggle" type="button" id="language-toggle"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            EN
-                        </button>
-                        <div id="google_translate_element" class="dropdown-menu p-2 " style="display: none;"></div>
-                    </div>
                     <!-- Login Button -->
                     <div class="dropdown login">
                         <button class="btn btn-primary dropdown-toggle" type="button" id="loginMenuButton">
@@ -119,7 +100,7 @@
         <div
             class="hero-content container d-flex flex-column-reverse flex-md-row justify-content-between align-items-center p-5">
             <div class="hero-head w-100 text-center text-md-start">
-                <img src="../static/images/Migrant Workers.jpg" alt="Migrant Workers" class="w-100">
+                <img src="../static/images/migrants.jpg" alt="Migrant People" class="w-100">
             </div>
         </div>
     </section>
@@ -161,7 +142,7 @@
                 <ul class="services-links">
                     <li><a href="/info#tracking">Tracking Support</a></li>
                     <li><a href="/info#legalsupport">Legal Support</a></li>
-                    <li><a href="#/info#legalsupport">Education and Training</a></li>
+                    <li><a href="/info#complaint">Complaint Registeration</a></li>
                 </ul>
             </div>
         </div>
@@ -273,7 +254,7 @@
             <div class="row">
                 <!-- Logo Section -->
                 <div class="col-md-4 footer-logo">
-                    <img src="../static/images/MSH Logo.png" alt="Migrant Support Hub Logo" class="img-fluid"
+                    <img src="../static/images/msh-logo.png" alt="Migrant Support Hub Logo" class="img-fluid"
                         width="200">
                 </div>
 
@@ -282,7 +263,7 @@
                     <h3>About Us</h3>
                     <p>
                         Migrant Support Hub is dedicated to providing resources, assistance,
-                        and support to migrants across Tamil Nadu. We aim to foster inclusivity
+                        and support to migrants within Tamil Nadu. We aim to foster inclusivity
                         and build strong communities.
                     </p>
                 </div>
@@ -291,7 +272,7 @@
                 <div class="col-md-4 footer-contact">
                     <h3>Contact Us</h3>
                     <ul>
-                        <li><img src="../static/images/Phone icon.png" alt="phoneIcon"> 0987656789</li>
+                        <li><img src="../static/images/tele-icon.png" alt="phoneIcon"> +91 987656789</li>
                         <li><img src="../static/images/email-icon.png" alt="email-icon">
                             <a href="mailto:migrantsupport@gmail.com">migrantsupport@gmail.com</a>
                         </li>
@@ -304,19 +285,7 @@
             </div>
         </div>
     </footer>
-    <script>
-         const languageToggle = document.getElementById("language-toggle");
-    const googleTranslateElement = document.getElementById("google_translate_element");
-
-    // Show Google Translate dropdown when the button is clicked
-    languageToggle.addEventListener("click", () => {
-        if (googleTranslateElement.style.display === "none" || googleTranslateElement.style.display === "") {
-            googleTranslateElement.style.display = "block";
-        } else {
-            googleTranslateElement.style.display = "none";
-        }
-    });
-    </script>
+   
 </body>
 
 </html>

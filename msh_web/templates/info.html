@@ -7,26 +7,14 @@
     <title>Info Hub - Migrant Support Hub</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../static/css/infostyle.css">
-    <script type="text/javascript">
-        function googleTranslateElementInit() {
-            new google.translate.TranslateElement(
-                { pageLanguage: 'en' },
-                'google_translate_element'
-            );
-        }
-    </script>
-
-    <script type="text/javascript"
-        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
 </head>
 
 <body>
-    <div id="google_translate_element"></div>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between">
         <div class="container">
-            <a class="navbar-brand" href="../templates/index.html">Migrant Support Hub</a>
+            <a class="navbar-brand" href="./">Migrant Support Hub</a>
         </div>
     </nav>
 
@@ -42,10 +30,10 @@
         <button onclick="scrollToSection('email')">Email Support</button>
     </div>
     <section>
-     <div id="migrantCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div id="migrantCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="./20945185.jpg" alt="">
+                    <img src="../static/images/ourjourney.jpg" alt="Our Journey">
                     <div class="carousel-caption">
                         <p>Design 1</p>
                         <h2>Our Journey</h2>
@@ -55,7 +43,7 @@
                 </div>
 
                 <div class="carousel-item">
-                    <img src="./3d-illustration-pen-putting-blue-ticks-paper.jpg" alt="">
+                    <img src="../static/images/ourmission.jpg" alt="Our Mission">
                     <div class="carousel-caption">
                         <p>Design 2</p>
                         <h2>Our Mission</h2>
@@ -65,7 +53,7 @@
                 </div>
 
                 <div class="carousel-item">
-                    <img src="./8383290.jpg" alt="">
+                    <img src="../static/images/ourvision.jpg" alt="Our Vision">
                     <div class="carousel-caption">
                         <p>Design 3</p>
                         <h2>Our Vision</h2>
@@ -75,7 +63,7 @@
                 </div>
 
                 <div class="carousel-item">
-                    <img src="./20945185.jpg" alt="">
+                    <img src="../static/images/ourcomplaint.jpeg" alt="Complaint Image">
                     <div class="carousel-caption">
                         <p>Design 4</p>
                         <h2>Complaint Registration</h2>
@@ -93,97 +81,188 @@
                 <span class="carousel-control-next-icon"></span>
             </button>
         </div>
-
-        <!-- Content Below Carousel -->
-        <div id="sliderInfo" class="slider-info active">
-            <p>Born from the urgency of the migrant crisis, Migrant Support Hub began as a small community outreach
-                project...</p>
-        </div>
     </section>
-    
-    <section id="journey" class="our-journey d-flex align-items-center justify-content-center text-center text-white">
-        <div class="container">
-            <h1 class="display-4 fw-bold">Our Journey</h1>
-            <p class="lead mt-4">
-                Born from the urgency of the migrant crisis, Migrant Support Hub began as a small community outreach
-                project.
-                What started with just a handful of volunteers responding to emergency calls has now evolved into a
-                digitally connected,
-                state-supported initiative reaching thousands.
-            </p>
-            <p class="mt-3">
-                Our mission took shape during long train rides, in temporary shelters, and in legal offices where
-                justice had long been delayed.
-                With every complaint we resolved and every life we helped stabilize, our network of hope expanded.
-            </p>
-            <p class="mt-3">
-                Today, our journey continues—powered by empathy, technology, and the unwavering belief that every
-                migrant deserves dignity,
-                protection, and opportunity.
-            </p>
-            <a href="#services" class="btn btn-outline-light mt-4">Explore Our Services</a>
-        </div>
+    <section id="journey" class="section bg-white">
+        <h1 class="section-title">Our Journey</h1>
+        <p>
+            Migrant Support Hub Tamil Nadu was created to address the unique challenges faced by migrant workers across
+            the state. Recognizing the urgent need for accessible resources and support, our project aims to empower
+            migrants through technology and community engagement.
+        </p>
+        <p>Since the start of this final year project, we have:</p>
+        <ul class="timeline">
+            <li>Researched the critical issues affecting migrant workers in Tamil Nadu, including legal, social, and
+                economic barriers.</li>
+            <li>Developed a user-friendly web platform for complaint registration, real-time tracking, and assistance
+                services.</li>
+            <li>Integrated multilingual support, including Tamil, Hindi, and English, to reach diverse migrant
+                communities.</li>
+            <li>Organized awareness campaigns and digital workshops to educate migrants on their rights and available
+                government schemes.</li>
+        </ul>
+        <p>
+            Our journey continues as we strive to expand the platform’s reach and impact, making a meaningful difference
+            in the lives of migrants throughout Tamil Nadu.
+        </p>
     </section>
-
 
     <section id="mission" class="section bg-white">
         <h1 class="section-title">Our Mission</h1>
-        <img src="../static/images/mission" alt="Our Mission">
-        <p>Providing transparent complaint tracking, legal assistance, and access to essential services for every
-            migrant in need.</p>
+        <p>
+            Our mission is to create a trusted, accessible platform that empowers migrant workers across Tamil Nadu by
+            providing essential support services. We believe that every migrant deserves dignity, safety, and a voice.
+        </p>
+        <p>
+            Through this platform, we aim to:
+        </p>
+        <ul>
+            <li>Enable easy and confidential complaint registration to address workplace and social issues promptly.
+            </li>
+            <li>Offer real-time tracking of complaint status, ensuring transparency and peace of mind.</li>
+            <li>Provide free legal support and guidance to help migrants navigate their rights and resolve disputes.
+            </li>
+            <li>Maintain a 24/7 helpline number staffed by trained professionals offering immediate assistance and
+                counseling.</li>
+
+            <li>Educate migrants about their rights, available services, and how to access help when needed.</li>
+        </ul>
     </section>
+
 
     <section id="vision" class="section bg-light">
         <h1 class="section-title">Our Vision</h1>
-        <img src="../static/images/" alt="Our Vision">
-        <p>Creating a world where migration is safe, dignified, and a pathway to opportunity rather than struggle.</p>
+        <p>
+            We envision a Tamil Nadu where every migrant worker feels safe, supported, and empowered to build a better
+            future. Migration should be a pathway to opportunity, free from fear and discrimination.
+        </p>
+        <p>
+            Our long-term vision includes:
+        </p>
+        <ul>
+            <li>Creating a reliable, Tamil Nadu-wide platform for complaint registration and support for migrants.</li>
+            <li>Ensuring transparent tracking and quick resolution of issues faced by migrant workers.</li>
+            <li>Providing accessible legal aid and helpline services throughout the state.</li>
+            <li>Partnering with local authorities, NGOs, and communities to promote safe and dignified migration.</li>
+            <li>Raising awareness about migrant rights and fostering social inclusion within Tamil Nadu.</li>
+            <li>Building sustainable support systems that respond to the evolving needs of migrant communities.</li>
+        </ul>
     </section>
+
 
     <section id="complaint" class="section bg-white">
         <h1 class="section-title">Complaint Registration</h1>
-        <p>File complaints easily and track their progress with our digital complaint registration system.</p>
+        <p>
+            If you are facing threats, unsafe working conditions, poor living conditions, health issues, legal problems,
+            or need emotional support, you can register your complaint safely and confidentially using this form.
+        </p>
+
+        <p><strong>How to register your complaint:</strong></p>
+        <ol>
+            <li>Click on the “New Complaint” button from the dashboard or the menu.</li>
+            <li>Fill in the required details such as your full name, email, complaint category, and a detailed
+                description.</li>
+            <li>Optionally, you may upload supporting documents or mention any witnesses involved.</li>
+            <li>Specify the outcome you expect or how you'd like the issue to be resolved.</li>
+            <li>Submit your complaint — our team will review and respond as soon as possible.</li>
+        </ol>
+
+        <p>
+            Each complaint is treated with strict confidentiality. After submission, you will receive a unique Complaint
+            ID to track your case. Our support team may contact you for follow-up if necessary.
+        </p>
     </section>
+
 
     <section id="tracking" class="section bg-light">
         <h1 class="section-title">Tracking Support</h1>
-        <p>Track your complaints and support requests with real-time updates and transparent communication.</p>
+        <p>
+            After submitting your complaint, you will receive a unique <strong>Complaint ID</strong>. You can use this
+            ID to track the status of your complaint anytime through our complaint tracking page or dashboard.
+        </p>
+
+        <p>
+            Our system ensures transparency by providing real-time status updates. You will also receive notifications
+            through email or SMS (if contact details were provided).
+        </p>
+
+        <p><strong>Here’s what you can do with your Complaint ID:</strong></p>
+        <ul>
+            <li>Check the current status of your complaint (e.g., Received, In Review, In Progress, Resolved).</li>
+            <li>Request updates through our chatbot or by contacting our support email.</li>
+            <li>Connect with a support officer for clarification or urgent help.</li>
+            <li>See the estimated resolution timeline and upcoming actions.</li>
+            <li>Review the history of all complaints you’ve submitted and their outcomes.</li>
+        </ul>
+
+        <p>
+            We are dedicated to resolving each complaint fairly, and we’ll keep you informed at every step of the
+            process.
+        </p>
     </section>
+
 
     <section id="legal" class="section bg-white">
         <h1 class="section-title">Legal Support</h1>
-        <p>Access legal resources and assistance to navigate complex migrant-related issues and challenges.</p>
+        <p>
+            Migrant workers in Tamil Nadu often face legal challenges related to employment, documentation, or local
+            issues. Our legal support service is designed to assist you by providing basic and accessible help.
+        </p>
+
+        <ul>
+            <li>Free legal guidance on workplace issues and rights violations.</li>
+            <li>Help with drafting and understanding legal complaints or documents.</li>
+            <li>Support in approaching local authorities or filing complaints at police stations.</li>
+            <li>Referrals to nearby legal aid centers or NGOs offering assistance.</li>
+            <li>Awareness materials on labor rights and basic legal protections available in Tamil Nadu.</li>
+        </ul>
+
+        <p>
+            We aim to ensure that no migrant is left unsupported in the face of legal difficulties. All support is
+            provided with confidentiality and respect. Reach out to our team to get the help you need.
+        </p>
     </section>
+
 
     <section id="helpline" class="section bg-light">
         <h1 class="section-title">Helpline Number</h1>
-        <p>Call us anytime at <strong>+91 XXXXX XXXXX</strong> for 24/7 support and emergency assistance.</p>
+        <p>
+            Our helpline operates 24/7 to offer you assistance when you need it most. Whether it’s an emergency or
+            general inquiry, you can reach us anytime.
+        </p>
+        <p><strong>Call us at:</strong> <strong>+91 98765 43210</strong></p>
+        <p>
+            Available in Tamil, Hindi, English, and other regional languages. Our trained support staff will listen to
+            your concerns and connect you with the right resources.
+        </p>
+        <ul>
+            <li>Immediate help for emergencies and urgent cases.</li>
+            <li>Information on shelter, food, healthcare, and transportation.</li>
+            <li>Guidance on legal and documentation issues.</li>
+            <li>Emotional support and counseling services.</li>
+        </ul>
     </section>
 
     <section id="email" class="section bg-white">
         <h1 class="section-title">Email Support</h1>
-        <p>Contact us via email at <strong>support@migranthub.com</strong> for help and inquiries.</p>
+        <p>
+            Prefer to communicate in writing? Email our team and get personalized responses to your questions,
+            complaints, or suggestions.
+        </p>
+        <p><strong>Email us at:</strong> <strong>support@migranthub.com</strong></p>
+        <p>
+            We respond within 24 hours and prioritize emergency emails. Attach any relevant documents for quicker
+            resolution.
+        </p>
+        <ul>
+            <li>Describe your issue in detail for a faster response.</li>
+            <li>Attach photos, documents, or evidence if available.</li>
+            <li>All emails are treated with strict confidentiality.</li>
+            <li>We can reply in your preferred language.</li>
+        </ul>
     </section>
+
     <script src="../static/js/infoscript.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-    <script>
-        const sliderInfo = document.getElementById('sliderInfo');
-        const infoTexts = [
-            "Born from the urgency of the migrant crisis, Migrant Support Hub began as a small community outreach project...",
-            "Providing transparent complaint tracking, legal assistance, and access to essential services for every migrant in need.",
-            "Creating a world where migration is safe, dignified, and a pathway to opportunity rather than struggle.",
-            "File complaints easily and track their progress with our digital complaint registration system."
-        ];
-
-        document.getElementById('migrantCarousel').addEventListener('slid.bs.carousel', function (event) {
-            const index = event.to;
-            sliderInfo.style.opacity = 0;
-            setTimeout(() => {
-                sliderInfo.innerHTML = `<p>${infoTexts[index]}</p>`;
-                sliderInfo.style.opacity = 1;
-            }, 7000);
-        });
-    </script>
 </body>
 
 </html>
