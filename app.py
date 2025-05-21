@@ -20,23 +20,21 @@ db = firestore.client()
 
 #For Firebase JS SDK v7.20.0 and later, measurementId is optional
 firebase_Config = {
-   "apiKey": "AIzaSyDk_ATpeRx7lSm1Bj8lL3YJqS8Dzrovm1w",
-    "authDomain": "migrant-support-hub-ed02c.firebaseapp.com",
-    "projectId": "migrant-support-hub-ed02c",
-    "storageBucket": "migrant-support-hub-ed02c.appspot.com",
-    "messagingSenderId": "1093269407270",
-    "appId": "1:1093269407270:web:ac56480a66211dd0ca88e7",
-    "measurementId": "G-5Y8X1JHG75",
-    'databaseURL': "",
+    'apiKey': "AIzaSyDk_ATpeRx7lSm1Bj8lL3YJqS8Dzrovm1w",
+    'authDomain': "migrant-support-hub-ed02c.firebaseapp.com",
+    'projectId': "migrant-support-hub-ed02c",
+    'storageBucket': "migrant-support-hub-ed02c.firebasestorage.app",
+    'messagingSenderId': "1093269407270",
+    'appId': "1:1093269407270:web:ac56480a66211dd0ca88e7",
+    'measurementId': "G-5Y8X1JHG75",
+ 'databaseURL': ""
 }
 
 # Initialize Pyrebase for client auth
 pb = pyrebase.initialize_app(firebase_Config)
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'
-#app.config['SESSION_TYPE'] = 'filesystem'
-#app.config['PERMANENT_SESSION_LIFETIME'] = timedelta(minutes=30)# Change this to a random secret key
+app.secret_key = '123algfdriuvcdtg577889'
 
 # Authentication decorators
 def login_required(f):
