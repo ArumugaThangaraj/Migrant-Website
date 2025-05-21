@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Migrant Support Hub Registration</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        .form-section {
+            margin-bottom: 2rem;
+        }
+
+        .tooltip-icon {
+            margin-left: 5px;
+            color: #0d6efd;
+            cursor: pointer;
+        }
+
+        /* Spinner styling */
+        .spinner-border {
+            width: 1.5rem;
+            height: 1.5rem;
+            margin-left: 10px;
+            /* Add spacing between the spinner and the button */
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center text-primary mb-4">Registration Form</h1>
+        <form id="registrationForm" class="needs-validation" novalidate enctype="multipart/form-data" method="POST"
+            action="{{ url_for('registration') }}">
+
+            <!-- Personal Info -->
+            <fieldset class="form-section">
+                <legend>Personal Information</legend>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label for="name" class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="name" name="name" required />
+                    </div>
+                    <div class="col-md-6">
+                        <label for="dob" class="form-label">Date of Birth</label>
+                        <input type="date" class="form-control" id="dob" name="dob" required />
+                    </div>
+                    <div class="col-md-6">
+                        <label for="gender" class="form-label">Gender</label>
+                        <select class="form-select" id="gender" name="gender" required>
+                            <option disabled selected value="">Choose...</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="state" class="form-label">State</label>
+                        <select class="form-select" id="state" name="state" required>
+                            <option disabled selected value="">Choose your state...</option>
+                            <option value="andhra-pradesh">Andhra Pradesh</option>
+                            <option value="arunachal-pradesh">Arunachal Pradesh</option>
+                            <option value="assam">Assam</option>
+                            <option value="bihar">Bihar</option>
+                            <option value="chhattisgarh">Chhattisgarh</option>
+                            <option value="goa">Goa</option>
+                            <option value="gujarat">Gujarat</option>
+                            <option value="haryana">Haryana</option>
+                            <option value="himachal-pradesh">Himachal Pradesh</option>
+                            <option value="jharkhand">Jharkhand</option>
+                            <option value="karnataka">Karnataka</option>
+                            <option value="kerala">Kerala</option>
+                            <option value="madhya-pradesh">Madhya Pradesh</option>
+                            <option value="maharashtra">Maharashtra</option>
+                            <option value="manipur">Manipur</option>
+                            <option value="meghalaya">Meghalaya</option>
+                            <option value="mizoram">Mizoram</option>
+                            <option value="nagaland">Nagaland</option>
+                            <option value="odisha">Odisha</option>
+                            <option value="punjab">Punjab</option>
+                            <option value="rajasthan">Rajasthan</option>
+                            <option value="sikkim">Sikkim</option>
+                            <option value="tamil-nadu">Tamil Nadu</option>
+                            <option value="telangana">Telangana</option>
+                            <option value="tripura">Tripura</option>
+                            <option value="uttar-pradesh">Uttar Pradesh</option>
+                            <option value="uttarakhand">Uttarakhand</option>
+                            <option value="west-bengal">West Bengal</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="nationality" class="form-label">Nationality</label>
+                        <input type="text" class="form-control" id="nationality" name="nationality" required />
+                    </div>
+                    <div class="col-md-6">
+                        <label for="marital-status" class="form-label">Marital Status</label>
+                        <select class="form-select" id="marital-status" name="marital-status" required>
+                            <option disabled selected value="">Choose...</option>
+                            <option value="single">Single</option>
+                            <option value="married">Married</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="id-type" class="form-label">ID Type</label>
+                        <select class="form-select" id="id-type" name="id-type" required>
+                            <option disabled selected value="">Choose...</option>
+                            <option value="aadhar">Aadhaar</option>
+                            <option value="passport">Passport</option>
+                            <option value="voter-id">Voter ID</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="id-number" class="form-label">ID Number</label>
+                        <input type="text" class="form-control" id="id-number" name="id-number" required />
+                        <div class="invalid-feedback" id="id-number-feedback"></div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <!-- Contact Info -->
+            <fieldset class="form-section">
+                <legend>Contact Information</legend>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label for="email" class="form-label">
+                            Email Address
+                            <span class="tooltip-icon" data-bs-toggle="tooltip" title="Verification link will be sent">
+                                ⓘ
+                            </span>
+                        </label>
+                        <input type="email" class="form-control" id="email" name="email" required />
+                        <!--button type="button" id="verify-email" class="btn btn-secondary mt-2">Verify Email</button!-->
+                        <!-- Spinner for email verification -->
+                        <div id="email-spinner" class="spinner-border text-primary" role="status"
+                            style="display: none;">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="phone" class="form-label">Phone Number</label>
+                        <input type="tel" class="form-control" id="phone" name="phone" required />
+                    </div>
+
+                    <!-- Password Fields -->
+                    <div class="col-md-6">
+                        <label for="password" class="form-label">Create Password</label>
+                        <input type="password" class="form-control" id="password" name="password"
+                            placeholder="Enter your password" required />
+                    </div>
+                    <div class="col-md-6">
+                        <label for="confirm-password" class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control" id="confirm-password" name="confirm-password"
+                            placeholder="Re-enter your password" required />
+                        <div class="invalid-feedback">Passwords do not match.</div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="emergency-contact-name" class="form-label">Emergency Contact Name</label>
+                        <input type="text" class="form-control" id="emergency-contact-name"
+                            name="emergency-contact-name" required />
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="emergency-contact" class="form-label">Emergency Phone</label>
+                        <input type="tel" class="form-control" id="emergency-contact" name="emergency-contact"
+                            required />
+                    </div>
+
+                    <div class="col-12">
+                        <label for="temporary-address" class="form-label">Current Address</label>
+                        <textarea class="form-control" id="temporary-address" name="temporary-address" rows="2"
+                            required></textarea>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="permanent-address" class="form-label">Permanent Address</label>
+                        <textarea class="form-control" id="permanent-address" name="permanent-address" rows="2"
+                            required></textarea>
+                    </div>
+                </div>
+            </fieldset>
+
+
+            <!-- Work Info -->
+            <fieldset class="form-section">
+                <legend>Work Information</legend>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label for="occupation" class="form-label">Occupation</label>
+                        <select class="form-select" id="occupation" name="occupation" required>
+                            <option disabled selected value="">Choose your occupation...</option>
+                            <option value="laborer">Laborer</option>
+                            <option value="driver">Driver</option>
+                            <option value="teacher">Teacher</option>
+                            <option value="engineer">Engineer</option>
+                            <option value="doctor">Doctor</option>
+                            <option value="farmer">Farmer</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6" id="other-occupation-container" style="display: none;">
+                        <label for="other-occupation" class="form-label">Please specify your occupation</label>
+                        <input type="text" class="form-control" id="other-occupation" name="other-occupation"
+                            placeholder="Enter your occupation" />
+                    </div>
+                    <div class="col-md-6">
+                        <label for="work-location" class="form-label">Work Location</label>
+                        <input type="text" class="form-control" id="work-location" name="work-location" />
+                    </div>
+                </div>
+            </fieldset>
+
+
+            <!-- Terms + Submit -->
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="terms" name="terms" required />
+                <label class="form-check-label" for="terms">I agree to the
+                    <a href="/terms&condition" class="text-primary">terms and conditions</a></label>
+            </div>
+
+            <button type="submit" href="/userdashboard" id="reg" class="btn btn-primary w-100">
+                Register
+            </button>
+        </form>
+    </div>
+
+    <script>
+
+    </script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyDk_ATpeRx7lSm1Bj8lL3YJqS8Dzrovm1w",
+            authDomain: "migrant-support-hub-ed02c.firebaseapp.com",
+            projectId: "migrant-support-hub-ed02c",
+            storageBucket: "migrant-support-hub-ed02c.firebasestorage.app",
+            messagingSenderId: "1093269407270",
+            appId: "1:1093269407270:web:ac56480a66211dd0ca88e7",
+            measurementId: "G-5Y8X1JHG75"
+        };
+        // Initialize Firebase
+        const app = firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+
+    </script>
+
+    <script src="/static/js/register.js"></script>
+    <!-- Firebase SDKs + your register.js script here -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+</body>
+
+</html>

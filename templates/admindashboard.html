@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        #sidebar {
+            width: 250px;
+            min-height: 100vh;
+        }
+
+        .dark-mode {
+            background-color: #222;
+            color: white;
+        }
+
+        .card {
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="d-flex">
+        <!-- Sidebar -->
+        <div id="sidebar" class="bg-dark text-white p-3">
+            <h2 class="text-center">Admin Panel</h2>
+            <ul class="nav flex-column">
+                <li class="nav-item"><a href="#" class="nav-link text-white" onclick="loadDashboard()">Dashboard</a>
+                </li>
+                <li class="nav-item"><a href="#" class="nav-link text-white" onclick="loadUsers()">Users &
+                        Complaints</a></li>
+                <li class="nav-item"><a href="" class="nav-link text-white"
+                        >Logout</a></li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="container-fluid p-4" id="content">
+            <h1>Welcome, Admin</h1>
+            <p>Dashboard data loading...</p>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div class="modal fade" id="editModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Complaint Status</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <select id="statusSelect" class="form-select">
+                        <option value="Pending">Pending</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Resolved">Resolved</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="updateComplaintStatus()">Save</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap & JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>document.addEventListener("DOMContentLoaded", () => {
+            loadDashboard();
+        });
+
+        // Load Dashboard Content
+        function loadDashboard() {
+            document.getElementById("content").innerHTML = `
+            <h1>Dashboard Overview</h1>
+            <p>Loading dynamic data...</p>
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>User ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Complaints</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="usersTable"></tbody>
+            </table>`;
+            fetchUsersWithComplaints();
+        }
+
+        // Load Users & Complaints
+        function loadUsers() {
+            document.getElementById("content").innerHTML = `
+            <h1>Users & Complaints</h1>
+            <table class="table table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>User ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Complaints</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="usersTable"></tbody>
+            </table>`;
+            fetchUsersWithComplaints();
+        }
+
+        // Fetch Users with Complaints Data
+        let selectedUserId = null;
+        let selectedComplaintId = null;
+        function fetchUsersWithComplaints() {
+            const users = [
+                { id: 101, name: "John Doe", email: "john@example.com", complaints: "Login issue", status: "Pending" },
+                { id: 102, name: "Jane Smith", email: "jane@example.com", complaints: "Slow response time", status: "Resolved" },
+                { id: 103, name: "Michael Johnson", email: "michael@example.com", complaints: "Dashboard access denied", status: "In Progress" }
+            ];
+
+            const usersTable = document.getElementById("usersTable");
+            usersTable.innerHTML = users.map(user => `
+            <tr>
+                <td>${user.id}</td>
+                <td>${user.name}</td>
+                <td>${user.email}</td>
+                <td><span class="badge bg-${getStatusColor(user.status)}">${user.complaints} (${user.status})</span></td>
+                <td><button class="btn btn-sm btn-warning" onclick="editComplaint(${user.id})">Edit</button></td>
+            </tr>
+        `).join("");
+        }
+
+        // Open Edit Modal
+        function editComplaint(id) {
+            selectedComplaintId = id;
+            new bootstrap.Modal(document.getElementById("editModal")).show();
+        }
+
+        // Update Complaint Status Dynamically
+        function updateComplaintStatus() {
+            const newStatus = document.getElementById("statusSelect").value;
+            alert(`Complaint updated to "${newStatus}" for User ID: ${selectedComplaintId}`);
+            document.getElementById("editModal").querySelector(".btn-close").click();
+        }
+
+        // Get Badge Color Based on Status
+        function getStatusColor(status) {
+            return status === "Pending" ? "danger" : status === "In Progress" ? "warning" : "success";
+        }
+        // Log out
+        const logoutButton = document.querySelector("#sidebar a[href='']");
+        logoutButton.addEventListener("click", function (event) {
+            event.preventDefault(); // Prevent default link behavior
+            logout();
+        });
+        function logout() {
+            alert("loging out");
+            window.location.href = "/";
+        }
+        // Update complaint status
+function updateComplaintStatus(userId, complaintId) {
+    const newStatus = document.getElementById('statusSelect').value;
+    
+    fetch('/update_complaint_status', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            user_id: userId,
+            complaint_id: complaintId,
+            status: newStatus
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert('Status updated successfully!');
+            document.getElementById('editModal').querySelector('.btn-close').click();
+            // Refresh the complaints list
+            fetchUsersWithComplaints();
+        } else {
+            alert('Error updating status: ' + data.error);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred while updating the status');
+    });
+}
+
+// Fetch users with complaints from server
+function fetchUsersWithComplaints() {
+    fetch('/admindashboard')
+    .then(response => response.text())
+    .then(html => {
+        // This is a simplified approach - in a real app you'd want an API endpoint
+        // that returns JSON data instead of HTML
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        const complaints = JSON.parse(doc.getElementById('complaints-data').textContent);
+        
+        renderComplaintsTable(complaints);
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Error loading complaints data');
+    });
+}
+
+function renderComplaintsTable(complaints) {
+    const usersTable = document.getElementById("usersTable");
+    usersTable.innerHTML = complaints.map(complaint => `
+        <tr>
+            <td>${complaint.user_id}</td>
+            <td>${complaint.user_name}</td>
+            <td>${complaint.user_email}</td>
+            <td>
+                <strong>${complaint.category}</strong><br>
+                ${complaint.description}
+            </td>
+            <td>
+                <span class="badge bg-${getStatusColor(complaint.status)}">${complaint.status}</span>
+            </td>
+            <td>
+                <button class="btn btn-sm btn-warning" 
+                        onclick="editComplaint('${complaint.user_id}', '${complaint.id}')">
+                    Edit
+                </button>
+            </td>
+        </tr>
+    `).join("");
+}
+
+// Modify the editComplaint function to accept user ID and complaint ID
+function editComplaint(userId, complaintId) {
+    selectedUserId = userId;
+    selectedComplaintId = complaintId;
+    new bootstrap.Modal(document.getElementById('editModal')).show();
+}
+
+// Update the updateComplaintStatus function to use the selected IDs
+function updateComplaintStatus() {
+    const newStatus = document.getElementById('statusSelect').value;
+    if (!selectedUserId || !selectedComplaintId) return;
+
+    fetch('/update_complaint_status', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            user_id: selectedUserId,
+            complaint_id: selectedComplaintId,
+            status: newStatus
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert('Status updated successfully!');
+            document.getElementById('editModal').querySelector('.btn-close').click();
+            fetchUsersWithComplaints(); // Refresh table
+        } else {
+            alert('Error updating status: ' + data.error);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred while updating the status');
+    });
+}
+    </script>
+    <script type="application/json" id="complaints-data">
+  {{ complaints|tojson }}
+</script>
+</body>
+
+</html>

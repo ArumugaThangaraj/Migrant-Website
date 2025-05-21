@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin Login</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .card {
+            width: 370px;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            transition: box-shadow 0.2s;
+        }
+
+        .card:hover {
+            box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+        }
+
+        .btn {
+            border-radius: 5px;
+        }
+
+        .form-label {
+            margin-top: 10px;
+            font-weight: 500;
+        }
+
+        .form-control:focus {
+            border-color: #0d6efd;
+            box-shadow: 0 0 0 0.2rem rgba(13,110,253,.15);
+        }
+
+        #admin-error-message {
+            font-size: 1rem;
+            font-weight: 500;
+            background: #ffeaea;
+            border: 1px solid #ffb3b3;
+            border-radius: 5px;
+            padding: 6px 0;
+            display: none;
+        }
+
+        .logo {
+            display: block;
+            margin: 0 auto 18px auto;
+            width: 60px;
+            height: 60px;
+        }
+
+        .show-password {
+            cursor: pointer;
+            font-size: 0.95em;
+            color: #0d6efd;
+            margin-left: 5px;
+            user-select: none;
+        }
+
+        .forgot-link {
+            font-size: 0.95em;
+            color: #0d6efd;
+            text-decoration: none;
+            float: right;
+            margin-top: 5px;
+        }
+
+        .forgot-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <div class="card p-4 shadow">
+            <img src="https://cdn-icons-png.flaticon.com/512/3064/3064197.png" alt="Admin Logo" class="logo" />
+            <h2 class="text-center mb-3">Admin Login</h2>
+            <form id="adminLoginForm" method="POST" action="/adminlogin" autocomplete="on" novalidate>
+                <div id="admin-error-message" class="text-danger text-center mb-2"></div>
+                <label for="admin-email" class="form-label">Email</label>
+                <input type="email" name="email" id="admin-email" required class="form-control" autocomplete="username" aria-label="Admin Email">
+                <label for="admin-password" class="form-label">Password</label>
+                <div class="input-group">
+                    <input type="password" name="password" id="admin-password" required class="form-control" autocomplete="current-password" aria-label="Admin Password">
+                </div>
+                <button type="submit" class="btn btn-primary mt-3 w-100">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const adminLoginForm = document.getElementById("adminLoginForm");
+        const errorDiv = document.getElementById("admin-error-message");
+        const passwordInput = document.getElementById("admin-password");
+        const togglePassword = document.getElementById("togglePassword");
+
+        // Show/hide password toggle
+        togglePassword.addEventListener("click", function() {
+            const type = passwordInput.type === "password" ? "text" : "password";
+            passwordInput.type = type;
+            togglePassword.textContent = type === "password" ? "Show" : "Hide";
+        });
+
+        if (adminLoginForm) {
+            adminLoginForm.addEventListener("submit", function(event) {
+                event.preventDefault();
+
+                const formData = new FormData(adminLoginForm);
+                fetch("/adminlogin", {
+                    method: "POST",
+                    body: formData
+                })
+                .then(response => {
+                    if (response.redirected) {
+                        window.location.href = response.url;
+                        return;
+                    }
+                    return response.text();
+                })
+                .then(html => {
+                    if (html) {
+                        // Show error message if present in returned HTML
+                        const parser = new DOMParser();
+                        const doc = parser.parseFromString(html, "text/html");
+                        const errorMsg = doc.getElementById("admin-error-message");
+                        if (errorMsg && errorMsg.textContent.trim()) {
+                            errorDiv.textContent = errorMsg.textContent;
+                            errorDiv.style.display = "block";
+                        } else {
+                            document.open();
+                            document.write(html);
+                            document.close();
+                        }
+                    }
+                })
+                .catch(() => {
+                    if (errorDiv) {
+                        errorDiv.textContent = "An error occurred. Please try again.";
+                        errorDiv.style.display = "block";
+                    }
+                });
+            });
+        }
+    });
+    </script>
+</body>
+
+</html>

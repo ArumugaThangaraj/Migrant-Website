@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MSH</title>
+    <link rel="shortcut icon" href="./assets/Images/mshlogo.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement(
+                { pageLanguage: 'en' },
+                'google_translate_element'
+            );
+        }
+    </script>
+    <script type="text/javascript"
+        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</head>
+
+<body>
+
+    <!-- Header Section -->
+    <header class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <!-- Logo Section -->
+                <div class="logo d-flex align-items-center">
+                    <div class="msh-logo d-flex align-items-center"><img src="../static/images/mshlogo.png"
+                            alt="Migrant Support Hub Logo" class="img" width="100">
+                        <h3>Migrant Support Hub</h3>
+                    </div>
+
+
+                </div>
+
+                <!-- Mobile Toggle Button -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+                    aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Navbar Links -->
+                <div class="collapse navbar-collapse" id="navbarContent">
+                    <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#hero">Home</a>
+                        </li>
+                        <!-- Dropdown for About -->
+                        <!-- About -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="aboutDropdown"
+                                data-bs-toggle="dropdown">About</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/info#ourjourney">Our Journey</a></li>
+                                <li><a class="dropdown-item" href="/info#mission">Our Mission</a></li>
+                                <li><a class="dropdown-item" href="/info#vision">Our Vision</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Services -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown"
+                                data-bs-toggle="dropdown">Services</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/info#complaint">Complaint Registration</a></li>
+                                <li><a class="dropdown-item" href="/info#tracking">Tracking Support</a></li>
+                                <li><a class="dropdown-item" href="/info#legal">Legal Support</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Contact -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="contactDropdown"
+                                data-bs-toggle="dropdown">Contact</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/info#helpline">Helpline Number</a></li>
+                                <li><a class="dropdown-item" href="/info#email">E-mail Support</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="#register">How to Register?</a>
+                        </li>
+                    </ul>
+
+                    <!-- Language Toggle Button -->
+                    <div class="dropdown language-toggle me-2">
+                        <button class="btn  dropdown-toggle" type="button" id="language-toggle"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            LN
+                        </button>
+                        <div id="google_translate_element" class="dropdown-menu p-2 " style="display: none;"></div>
+                    </div>
+                    <!-- Login Button -->
+                    <div class="dropdown login">
+                        <button class="btn btn-primary dropdown-toggle" type="button" id="loginMenuButton">
+                            Login
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="loginMenuButton">
+                            <li><a class="dropdown-item user" href="/userlogin" id="userlogin"> Users</a></li>
+                            <li><a class="dropdown-item" href="/adminlogin" id="adminlogin">Officials</a></li>
+                        </ul>
+                    </div>
+                    <!-- Register Button -->
+                    <a href="/registration" class="btn btn-success ms-2">Register</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- Home Section -->
+    <section id="hero">
+        <div
+            class="hero-content container d-flex flex-column-reverse flex-md-row justify-content-between align-items-center p-5">
+            <div class="hero-head w-100 text-center text-md-start">
+                <img src="../static/images/migrantworkers.jpg" alt="Migrant Workers" class="w-100">
+            </div>
+        </div>
+    </section>
+    <!--Second Section -->
+    <section id="about-us" class="about-us-section">
+        <h1 class="section-title text-center">Who We Are?</h1>
+        <div class="line"></div>
+        <div class="container d-flex align-items-center mb-5 section-box">
+            <!-- Link Box -->
+            <div class="info-box text-center">
+                <ul class="info-links">
+                    <li><a href="/info#journey">Our Journey</a></li>
+                    <li><a href="/info#mission">Our Mission</a></li>
+                    <li><a href="/info#vision">Our Vision</a></li>
+                </ul>
+            </div>
+            <!-- Heading Box -->
+            <div class="heading-box">
+                <h2 class="section-subtitle text-center display-4 fw-bold">Who <br>We <br>Are</h2>
+            </div>
+        </div>
+    </section>
+    <div class="home-button">
+        <button class="btn home-btn">
+            <a href="#">Back to home</a>
+        </button>
+    </div>
+
+    <section id="what-we-do" class="services-section">
+        <h1 class="section-title text-center">What We Do?</h1>
+        <div class="line"></div>
+        <div class="container d-flex flex-columnjustify-content-between mb-5 section-box2">
+            <!-- Heading Box -->
+            <div class="heading-box text-center">
+                <h2 class="section-subtitle display-4 fw-bold">What <br>We <br>Do</h2>
+            </div>
+            <!-- Services Box -->
+            <div class="services-box text-center mx-auto">
+                <ul class="services-links">
+                    <li><a href="/info#tracking">Tracking Support</a></li>
+                    <li><a href="/info#legalsupport">Legal Support</a></li>
+                    <li><a href="#/info#legalsupport">Education and Training</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map section for rigistration -->
+    <section id="register">
+        <div class="container">
+            <h1 class="section-title text-center mb-3">Steps to Registration</h1>
+            <div class="line"></div>
+            <div class="row gy-4 justify-content-center">
+
+                <!-- Step 1 -->
+                <div class="col-md-4 col-lg-3">
+                    <div class="card step-card h-100 text-center">
+                        <div class="step-number">1</div>
+                        <img src="../static/images/step1.jpg" class="card-img-top step-img" alt="login image" />
+                        <div class="card-body">
+                            <h5 class="card-title">Step 1: Register</h5>
+                            <ul>
+                                <li>Click on the "Register" button</li>
+                                <li>Open the registration form</li>
+                                <li>Prepare required documents</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="col-md-4 col-lg-3">
+                    <div class="card step-card h-100 text-center">
+                        <div class="step-number">2</div>
+                        <img src="../static/images/step2.jpg" class="card-img-top step-img" alt="verification image" />
+                        <div class="card-body">
+                            <h5 class="card-title">Step 2: Fill Personal Info</h5>
+                            <ul>
+                                <li>Enter your full name and address</li>
+                                <li>Add contact number and email</li>
+                                <li>Ensure all details are correct</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="col-md-4 col-lg-3">
+                    <div class="card step-card h-100 text-center">
+                        <div class="step-number">3</div>
+                        <img src="../static/images/step3.jpg" class="card-img-top step-img" alt="form image" />
+                        <div class="card-body">
+                            <h5 class="card-title">Step 3: Set Login Credentials</h5>
+                            <ul>
+                                <li>Enter your email address</li>
+                                <li>Create a strong password</li>
+                                <li>Confirm your password</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="col-md-4 col-lg-3">
+                    <div class="card step-card h-100 text-center">
+                        <div class="step-number">4</div>
+                        <img src="../static/images/step4.jpg" class="card-img-top step-img" alt="services image" />
+                        <div class="card-body">
+                            <h5 class="card-title">Step 4: Agree & Submit</h5>
+                            <ul>
+                                <li>Read the Terms and Conditions</li>
+                                <li>Check the agreement box</li>
+                                <li>Click on "Register" to submit</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="col-md-4 col-lg-3">
+                    <div class="card step-card h-100 text-center">
+                        <div class="step-number">5</div>
+                        <img src="../static/images/step5.jpg" class="card-img-top step-img"
+                            alt="confirmation image" />
+                        <div class="card-body">
+                            <h5 class="card-title">Step 5: Login</h5>
+                            <ul>
+                                <li>Go to the login page</li>
+                                <li>Enter your email and password</li>
+                                <li>Click the "Login" button</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 6 -->
+                <div class="col-md-4 col-lg-3">
+                    <div class="card step-card h-100 text-center">
+                        <div class="step-number">6</div>
+                        <img src="../static/images/step6.jpg" class="card-img-top step-img" alt="welcome image" />
+                        <div class="card-body">
+                            <h5 class="card-title">Step 6: Dashboard Access</h5>
+                            <ul>
+                                <li>View your dashboard</li>
+                                <li>Explore available services</li>
+                                <li>Manage your profile and complaints</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Footer Section -->
+    <footer class="footer container">
+        <div class="container mx-auto">
+            <div class="row">
+                <!-- Logo Section -->
+                <div class="col-md-4 footer-logo">
+                    <img src="../static/images/mshlogo.png" alt="Migrant Support Hub Logo" class="img-fluid"
+                        width="200">
+                </div>
+
+                <!-- About Section -->
+                <div class="col-md-4 footer-about">
+                    <h3>About Us</h3>
+                    <p>
+                        Migrant Support Hub is dedicated to providing resources, assistance,
+                        and support to migrants across Tamil Nadu. We aim to foster inclusivity
+                        and build strong communities.
+                    </p>
+                </div>
+
+                <!-- Contact Section -->
+                <div class="col-md-4 footer-contact">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><img src="../static/images/Phone icon.png" alt="phoneIcon"> 0987656789</li>
+                        <li><img src="../static/images/email-icon.png" alt="email-icon">
+                            <a href="mailto:migrantsupport@gmail.com">migrantsupport@gmail.com</a>
+                        </li>
+                        <li><strong>Location:</strong> Tamil Nadu, India</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Migrant Support Hub. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        const languageToggle = document.getElementById("language-toggle");
+        const googleTranslateElement = document.getElementById("google_translate_element");
+
+        // Show Google Translate dropdown when the button is clicked
+        languageToggle.addEventListener("click", () => {
+            if (googleTranslateElement.style.display === "none" || googleTranslateElement.style.display === "") {
+                googleTranslateElement.style.display = "block";
+            } else {
+                googleTranslateElement.style.display = "none";
+            }
+        });
+    </script>
+</body>
+
+</html>
