@@ -9,10 +9,17 @@ import os
 from werkzeug.utils import secure_filename
 
 
+firebase_creds_env = os.environ.get("FIREBASE_CREDENTIALS")
+
+if firebase_creds_env:
+    firebase_creds_dict = json.loads(firebase_creds_env)
+    cred = credentials.Certificate(firebase_creds_dict)
+else:
+    cred = credentials.Certificate('adminsdk.json')
+
+firebase_admin.initialize_app(cred)
 
 
-# Initialize Firebase Admin
-cred = credentials.Certificate('adminsdk.json')  # Download this from Firebase Console
 firebase_admin.initialize_app(cred)
 
 # Initialize Firestore
