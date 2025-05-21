@@ -8,7 +8,6 @@ import json
 import os
 from werkzeug.utils import secure_filename
 
-
 firebase_creds_env = os.environ.get("FIREBASE_CREDENTIALS")
 
 if firebase_creds_env:
@@ -17,15 +16,14 @@ if firebase_creds_env:
 else:
     cred = credentials.Certificate('adminsdk.json')
 
-firebase_admin.initialize_app(cred)
-
-
-firebase_admin.initialize_app(cred)
+# ✅ Initialize Firebase Admin only once
+if not firebase_admin._apps:
+    firebase_admin.initialize_app(cred)
 
 # Initialize Firestore
 db = firestore.client()
 
-#For Firebase JS SDK v7.20.0 and later, measurementId is optional
+# Firebase JS SDK config
 firebase_Config = {
     'apiKey': "AIzaSyDk_ATpeRx7lSm1Bj8lL3YJqS8Dzrovm1w",
     'authDomain': "migrant-support-hub-ed02c.firebaseapp.com",
@@ -34,13 +32,14 @@ firebase_Config = {
     'messagingSenderId': "1093269407270",
     'appId': "1:1093269407270:web:ac56480a66211dd0ca88e7",
     'measurementId': "G-5Y8X1JHG75",
- 'databaseURL': ""
+    'databaseURL': ""
 }
 
-# Initialize Pyrebase for client auth
+# Initialize Pyrebase
 pb = pyrebase.initialize_app(firebase_Config)
 
 app = Flask(__name__)
+
 app.secret_key = '123algfdriuvcdtg577889'
 
 # Authentication decorators
