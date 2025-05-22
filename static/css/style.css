@@ -10,7 +10,6 @@ body {
 }
 
 /* google transloator */
-/* Wrapper for Google Translate */
 #google_translate_element_wrapper {
     position: relative;
     display: inline-block;
@@ -28,7 +27,6 @@ body {
 }
 
 /* Header CSS */
-/* Logo section */
 .logo {
     display: flex;
     flex-wrap: wrap;
@@ -73,97 +71,11 @@ body {
     background-color: #f8f9fa;
 }
 
-.cancel button {
-    font-size: 30px;
-    border-radius: 50%;
-    border: 1px solid rgb(105, 95, 95);
-    background: white;
-    color: black;
-    width: 50px;
-    position: relative;
-    left: 45%;
-
-}
-
-.cancel button:hover {
-    background: #0d6efd;
-    color: white;
-    cursor: pointer;
-}
-
-
-
-.overlay {
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    left: 0;
-    top: 0;
-    background: rgba(0, 0, 0, 0.8);
-    z-index: 1;
-    display: none;
-}
-
-.popup {
-    position: fixed;
-    z-index: 2;
-    display: none;
-    max-width: 90%;
-    width: 400px;
-    top: 6%;
-    left: 35%;
-
-}
-
-
-@media (max-width:700px) {
-    .popup {
-        top: 10%;
-        left: 20px;
+@media (width<=768px) {
+    .login {
+        display: inline;
     }
-
 }
-
-/* login and sign up form */
-
-form {
-    margin: 20px auto;
-    width: 100%;
-    padding: 40px;
-    background: white;
-    font-size: 18px;
-    border-radius: 10px;
-}
-
-form input {
-    width: 100%;
-    margin: 10px 0;
-    padding: 8px;
-    font-size: 16px;
-}
-
-.form-btn {
-    margin-top: 10px;
-}
-
-form h3,
-form h4 {
-    color: #007bff;
-}
-
-form a {
-    text-decoration: none;
-}
-
-form a:hover {
-    text-decoration: underline;
-}
-
-
-
-
-
-
 
 
 /* Second Section */
@@ -267,65 +179,69 @@ form a:hover {
 
 /* Registration */
 
- .step-card {
-      border: none;
-      border-radius: 15px;
-      overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      animation: fadeIn 1s ease-in-out;
-    }
+.step-card {
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeIn 1s ease-in-out;
+    /* background-color: rgba(41, 182, 246,0.3); */
+}
 
-    .step-card:hover {
-      transform: scale(1.03);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-    }
+.step-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
 
-    .step-card .card-body {
-      background: linear-gradient(135deg, #f0f8ff, #e0f7fa, #fffde7);
-      border-radius: 0 0 12px 12px;
-      padding: 1rem;
-    }
+.step-card .card-body {
+    background: linear-gradient(270deg, #7c9ec0, #dce3e4);
+    border-radius: 0 0 12px 12px;
+    padding: 1rem;
+    text-align: left;
+    
+}
 
-    .step-number {
-      background: linear-gradient(135deg, #29b6f6, #ab47bc);
-      color: white;
-      font-size: 1.2rem;
-      font-weight: bold;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      margin: 1rem auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+.step-number {
+    background: linear-gradient(135deg, #2e97c8, #d0d0d0);
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin: 1rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-    @keyframes fadeIn {
-      from {
+@keyframes fadeIn {
+    from {
         opacity: 0;
         transform: translateY(20px);
-      }
-      to {
+    }
+
+    to {
         opacity: 1;
         transform: translateY(0);
-      }
     }
+}
 
-    .step-img {
-      height: 200px;
-      object-fit: cover;
-    }
+.step-img {
+    height: 200px;
+    object-fit: cover;
+}
 
-    .section-title {
-      font-weight: bold;
-    }
+.section-title {
+    font-weight: bold;
+}
 
-    .line {
-      width: 80px;
-      height: 4px;
-      background-color: #29b6f6;
-      margin: 0 auto 2rem;
-    }
+.line {
+    width: 80px;
+    height: 4px;
+    background-color: #29b6f6;
+    margin: 0 auto 2rem;
+}
 
 /* Foooter Section */
 

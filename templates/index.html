@@ -82,6 +82,11 @@
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="/info#helpline">Helpline Number</a></li>
                                 <li><a class="dropdown-item" href="/info#email">E-mail Support</a></li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ url_for('forum_auth') }}">Go to Forum</a>
+                                </li>
+                                
+
                             </ul>
                         </li>
 
@@ -100,7 +105,7 @@
                     </div>
                     <!-- Login Button -->
                     <div class="dropdown login">
-                        <button class="btn btn-primary dropdown-toggle" type="button" id="loginMenuButton">
+                        <button class="btn r1 btn-primary dropdown-toggle" type="button" id="loginMenuButton">
                             Login
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="loginMenuButton">
@@ -109,7 +114,7 @@
                         </ul>
                     </div>
                     <!-- Register Button -->
-                    <a href="/registration" class="btn btn-success ms-2">Register</a>
+                    <a href="/registration" class="btn btn-success  ms-2">Register</a>
                 </div>
             </div>
         </nav>
@@ -168,7 +173,7 @@
     </section>
 
     <!-- Map section for rigistration -->
-    <section id="register">
+    <section id="register" class="mb-3">
         <div class="container">
             <h1 class="section-title text-center mb-3">Steps to Registration</h1>
             <div class="line"></div>
@@ -242,8 +247,7 @@
                 <div class="col-md-4 col-lg-3">
                     <div class="card step-card h-100 text-center">
                         <div class="step-number">5</div>
-                        <img src="../static/images/step5.jpg" class="card-img-top step-img"
-                            alt="confirmation image" />
+                        <img src="../static/images/step5.jpg" class="card-img-top step-img" alt="confirmation image" />
                         <div class="card-body">
                             <h5 class="card-title">Step 5: Login</h5>
                             <ul>

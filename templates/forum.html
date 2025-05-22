@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Community Forum</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- ✅ Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body class="bg-light">
+    <div class="container py-4">
+        <h2 class="mb-4">Welcome to the Forum, {{ username }}</h2>
+
+        <!-- Post Form -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <form method="POST" action="{{ url_for('post_message') }}">
+                    <div class="mb-3">
+                        <textarea name="content" class="form-control" rows="3" placeholder="Write your post..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Post</button>
+                </form>
+            </div>
+        </div>
+
+        <hr>
+
+        <!-- Static Posts for Non-JS Fallback -->
+        <div id="static-posts">
+            {% for post in posts %}
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h6><strong>{{ post.author }}</strong> <small class="text-muted">{{ post.created_at }}</small></h6>
+                    <p>{{ post.content }}</p>
+
+                    <!-- Reply Form -->
+                    <form method="POST" action="{{ url_for('reply_to_post', post_id=post.id) }}" class="mb-2">
+                        <div class="input-group">
+                            <input type="text" name="reply" class="form-control" placeholder="Write a reply" required>
+                            <button class="btn btn-outline-secondary" type="submit">Reply</button>
+                        </div>
+                    </form>
+
+                    <!-- Replies -->
+                    {% for reply in post.replies %}
+                    <div class="ms-3 text-muted">
+                        <em>{{ reply.author }}:</em> {{ reply.content }}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <!-- 🔄 Real-time Posts Container -->
+        <div id="posts-container"></div>
+    </div>
+
+    <!-- ✅ Bootstrap JS (optional for interactive components) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- ✅ Firebase Real-time Script -->
+    <script type="module">
+        import { db } from "/static/js/firebase_config.js";
+        import { collection, query, orderBy, onSnapshot } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore.js";
+
+        const postsContainer = document.getElementById("posts-container");
+        const staticPosts = document.getElementById("static-posts");
+        staticPosts.style.display = "none"; // Hide fallback if JS is working
+
+        const q = query(collection(db, "forum_posts"), orderBy("created_at", "desc"));
+
+        onSnapshot(q, (snapshot) => {
+            postsContainer.innerHTML = "";
+            snapshot.forEach(doc => {
+                const data = doc.data();
+                const postHtml = `
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h6><strong>${data.author}</strong> 
+                            <small class="text-muted">${new Date(data.created_at.seconds * 1000).toLocaleString()}</small>
+                        </h6>
+                        <p>${data.content}</p>
+                        ${data.replies && data.replies.length > 0 ? '<em>Replies:</em><br>' : ''}
+                        ${data.replies ? data.replies.map(reply => `
+                            <div class="ms-3 text-muted">
+                                <strong>${reply.author}</strong>: ${reply.content}
+                            </div>
+                        `).join('') : ''}
+                    </div>
+                </div>
+                `;
+                postsContainer.innerHTML += postHtml;
+            });
+        });
+    </script>
+</body>
+
+</html>

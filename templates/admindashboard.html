@@ -38,8 +38,11 @@
                 </li>
                 <li class="nav-item"><a href="#" class="nav-link text-white" onclick="loadUsers()">Users &
                         Complaints</a></li>
-                <li class="nav-item"><a href="" class="nav-link text-white"
-                        >Logout</a></li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-white" onclick="loadForum()">Forum</a>
+                </li>
+
+                <li class="nav-item"><a href="" class="nav-link text-white">Logout</a></li>
             </ul>
         </div>
 
@@ -139,6 +142,46 @@
             </tr>
         `).join("");
         }
+        function loadForum() {
+    fetch('/admin/forum/posts')
+        .then(response => response.json())
+        .then(posts => {
+            const forumHtml = `
+                <h1>User Forum Posts</h1>
+                <div id="forumPosts" class="row gy-3">
+                    ${posts.map(post => `
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h6>
+                                        <strong>${post.author}</strong> 
+                                        <small class="text-muted">${new Date(post.created_at._seconds * 1000).toLocaleString()}</small>
+                                    </h6>
+                                    <p>${post.content}</p>
+                                    ${post.replies && post.replies.length ? `
+                                        <div class="ms-3">
+                                            <em>Replies:</em>
+                                            ${post.replies.map(reply => `
+                                                <div><strong>${reply.author}</strong>: ${reply.content}</div>
+                                            `).join('')}
+                                        </div>
+                                    ` : ""}
+                                    <form method="POST" action="/admin/delete_post/${post.id}" onsubmit="return confirm('Delete this post?')">
+                                        <button class="btn btn-danger btn-sm mt-2">Delete</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            document.getElementById("content").innerHTML = forumHtml;
+        })
+        .catch(err => {
+            console.error(err);
+            alert("Failed to load forum posts");
+        });
+}
 
         // Open Edit Modal
         function editComplaint(id) {
@@ -168,59 +211,59 @@
             window.location.href = "/";
         }
         // Update complaint status
-function updateComplaintStatus(userId, complaintId) {
-    const newStatus = document.getElementById('statusSelect').value;
-    
-    fetch('/update_complaint_status', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            user_id: userId,
-            complaint_id: complaintId,
-            status: newStatus
-        })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            alert('Status updated successfully!');
-            document.getElementById('editModal').querySelector('.btn-close').click();
-            // Refresh the complaints list
-            fetchUsersWithComplaints();
-        } else {
-            alert('Error updating status: ' + data.error);
+        function updateComplaintStatus(userId, complaintId) {
+            const newStatus = document.getElementById('statusSelect').value;
+
+            fetch('/update_complaint_status', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    user_id: userId,
+                    complaint_id: complaintId,
+                    status: newStatus
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Status updated successfully!');
+                        document.getElementById('editModal').querySelector('.btn-close').click();
+                        // Refresh the complaints list
+                        fetchUsersWithComplaints();
+                    } else {
+                        alert('Error updating status: ' + data.error);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred while updating the status');
+                });
         }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('An error occurred while updating the status');
-    });
-}
 
-// Fetch users with complaints from server
-function fetchUsersWithComplaints() {
-    fetch('/admindashboard')
-    .then(response => response.text())
-    .then(html => {
-        // This is a simplified approach - in a real app you'd want an API endpoint
-        // that returns JSON data instead of HTML
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(html, 'text/html');
-        const complaints = JSON.parse(doc.getElementById('complaints-data').textContent);
-        
-        renderComplaintsTable(complaints);
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('Error loading complaints data');
-    });
-}
+        // Fetch users with complaints from server
+        function fetchUsersWithComplaints() {
+            fetch('/admindashboard')
+                .then(response => response.text())
+                .then(html => {
+                    // This is a simplified approach - in a real app you'd want an API endpoint
+                    // that returns JSON data instead of HTML
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    const complaints = JSON.parse(doc.getElementById('complaints-data').textContent);
 
-function renderComplaintsTable(complaints) {
-    const usersTable = document.getElementById("usersTable");
-    usersTable.innerHTML = complaints.map(complaint => `
+                    renderComplaintsTable(complaints);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Error loading complaints data');
+                });
+        }
+
+        function renderComplaintsTable(complaints) {
+            const usersTable = document.getElementById("usersTable");
+            usersTable.innerHTML = complaints.map(complaint => `
         <tr>
             <td>${complaint.user_id}</td>
             <td>${complaint.user_name}</td>
@@ -240,44 +283,44 @@ function renderComplaintsTable(complaints) {
             </td>
         </tr>
     `).join("");
-}
-
-// Modify the editComplaint function to accept user ID and complaint ID
-function editComplaint(userId, complaintId) {
-    selectedUserId = userId;
-    selectedComplaintId = complaintId;
-    new bootstrap.Modal(document.getElementById('editModal')).show();
-}
-
-// Update the updateComplaintStatus function to use the selected IDs
-function updateComplaintStatus() {
-    const newStatus = document.getElementById('statusSelect').value;
-    if (!selectedUserId || !selectedComplaintId) return;
-
-    fetch('/update_complaint_status', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-            user_id: selectedUserId,
-            complaint_id: selectedComplaintId,
-            status: newStatus
-        })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            alert('Status updated successfully!');
-            document.getElementById('editModal').querySelector('.btn-close').click();
-            fetchUsersWithComplaints(); // Refresh table
-        } else {
-            alert('Error updating status: ' + data.error);
         }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('An error occurred while updating the status');
-    });
-}
+
+        // Modify the editComplaint function to accept user ID and complaint ID
+        function editComplaint(userId, complaintId) {
+            selectedUserId = userId;
+            selectedComplaintId = complaintId;
+            new bootstrap.Modal(document.getElementById('editModal')).show();
+        }
+
+        // Update the updateComplaintStatus function to use the selected IDs
+        function updateComplaintStatus() {
+            const newStatus = document.getElementById('statusSelect').value;
+            if (!selectedUserId || !selectedComplaintId) return;
+
+            fetch('/update_complaint_status', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    user_id: selectedUserId,
+                    complaint_id: selectedComplaintId,
+                    status: newStatus
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Status updated successfully!');
+                        document.getElementById('editModal').querySelector('.btn-close').click();
+                        fetchUsersWithComplaints(); // Refresh table
+                    } else {
+                        alert('Error updating status: ' + data.error);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred while updating the status');
+                });
+        }
     </script>
     <script type="application/json" id="complaints-data">
   {{ complaints|tojson }}
